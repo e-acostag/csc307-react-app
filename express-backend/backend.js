@@ -111,6 +111,9 @@ app.delete('/users/:id', (req, res) => {
 });
 
 function deleteUser(user) {
-    const index = users['users_list'].indexOf(user)
-    users['users_list'].splice(index, 1);
+    users['users_list'].splice(getUserIndex(user), 1);
+}
+
+function getUserIndex(user) {
+    return users['users_list'].indexOf(user);
 }
