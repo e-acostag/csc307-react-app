@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "create-react-app": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
