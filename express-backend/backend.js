@@ -1,5 +1,6 @@
 import express from "express";
 import cors from 'cors';
+import {v4 as uuidv4} from 'uuid';
 
 const app = express();
 const port = 8000;
@@ -85,13 +86,17 @@ function findUserById(id) {
 }
 
 app.post('/users', (req, res) => {
-    const userToAdd = req.body;
+    const userToAdd = {...generateID(), ...req.body};
     addUser(userToAdd);
     res.status(201).end();
 });
 
 function addUser(user) {
     users['users_list'].push(user);
+}
+
+function generateID() {
+    return {id: uuidv4().slice(0, 5)};
 }
 
 app.delete('/users/:id', (req, res) => {
